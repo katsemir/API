@@ -6,6 +6,10 @@ api = Api(app)
 
 items = {}
 
+@app.route("/")
+def home():
+    return {"message": "API працює!"}
+
 class Item(Resource):
     def get(self, name):
         if name in items:
@@ -28,4 +32,4 @@ class Item(Resource):
 api.add_resource(Item, "/item/<string:name>")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
