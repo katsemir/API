@@ -1,17 +1,16 @@
-# Використовуємо офіційний образ Python
-FROM python:3.10
+FROM python:3.13-slim
 
-# Встановлюємо робочу директорію
+# Встановлення робочої директорії
 WORKDIR /app
 
-# Копіюємо всі файли проєкту в контейнер
+# Копіюємо файли
 COPY . .
 
-# Встановлюємо бібліотеки
-RUN pip install --no-cache-dir -r requirements.txt
+# Встановлення залежностей
+RUN pip install --no-cache-dir flask flask-restful flask-sqlalchemy
 
-# Відкриваємо порт 5000 для Flask
+# Відкриваємо порт
 EXPOSE 5000
 
-# Запускаємо API
+# Запуск додатку
 CMD ["python", "API.py"]
