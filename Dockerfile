@@ -6,8 +6,9 @@ WORKDIR /app
 # Копіюємо файли
 COPY . .
 
-# Встановлення залежностей
-RUN pip install --no-cache-dir flask flask-restful flask-sqlalchemy
+# Встановлення залежностей із requirements.txt
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Відкриваємо порт
 EXPOSE 5000
